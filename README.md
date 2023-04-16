@@ -1,7 +1,7 @@
 # ODQA bot
 Retrieves information from en_wiki and answers quastions
 
-## !Work only with my fork of Deeppavlov! and with "pip installed" bpr
+## !It works only with my fork of Deeppavlov! and with "pip installed" bpr
 https://github.com/RodkinIvan/DeepPavlov/tree/crop_fid
 https://github.com/studio-ousia/bpr
 on python 3.8
