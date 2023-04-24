@@ -2,25 +2,25 @@ import re
 
 from dff.script import labels as lbl
 from dff.script import conditions as cnd
-from dff.script import GLOBAL, TRANSITIONS, RESPONSE, Context, Actor, Message
+from dff.script import GLOBAL, TRANSITIONS, RESPONSE, Context, Message
 
 from load_model import model
 
-def generated_response(ctx: Context, actor: Actor, *args, **kwargs) -> Message:
+def generated_response(ctx: Context, *args, **kwargs) -> Message:
 
     generated_text = model([ctx.last_request.text])[0]
     return Message(text=generated_text)
 
-def yes_condition(ctx: Context, actor: Actor, *args, **kwargs) -> bool:
+def yes_condition(ctx: Context, *args, **kwargs) -> bool:
     request = ctx.last_request
     return bool(re.search(r'yes|y|of course|ofk', request.text))
 
-def no_condition(ctx: Context, actor: Actor, *args, **kwargs) -> bool:
+def no_condition(ctx: Context, *args, **kwargs) -> bool:
     request = ctx.last_request
     return bool(re.search(r'no|n|don\'t', request.text))
 
-def idk_condition(ctx: Context, actor: Actor, *args, **kwargs):
-    return not yes_condition(ctx, actor, *args, **kwargs) and not no_condition(ctx, actor, *args, **kwargs)
+def idk_condition(ctx: Context, *args, **kwargs):
+    return not yes_condition(ctx, *args, **kwargs) and not no_condition(ctx, *args, **kwargs)
 
 default_trans = {
     ('greeting_flow',"greeting_node"): cnd.exact_match(Message(text="/start")),
