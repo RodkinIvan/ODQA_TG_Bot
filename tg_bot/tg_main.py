@@ -3,7 +3,7 @@ import os
 from dff.script import RESPONSE, TRANSITIONS, Message
 from dff.messengers.telegram import PollingTelegramInterface
 from dff.pipeline import Pipeline
-from dff.script import GLOBAL, TRANSITIONS, RESPONSE, Context, Actor, Message
+from dff.script import GLOBAL, TRANSITIONS, RESPONSE, Context, Message
 from dff.utils.testing.common import is_interactive_mode
 
 
